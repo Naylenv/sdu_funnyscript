@@ -1,0 +1,33 @@
+<title>SDU Class Robber</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<style>
+    input{
+    min-height: 20px;
+    min-width: 300px;
+}
+</style>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<h4>第一步：在下面登录你的账号</h4>
+<iframe src="http://bkjwxk.sdu.edu.cn/" width="100%" height="40%" frameborder="1" id="frame1"></iframe>
+<h4>第二步：填写课程号、课序号和抢课间隔时间</h4>
+课程号：<input type="text" id='classtype' placeholder="请输入课程号"><br />
+课序号：<input type="text" id='classnum' placeholder="请输入课序号"><br />
+间隔时间（单位毫秒，若不懂此项功能，保持默认即可）：<input type="text" id='sec' placeholder="抢课间隔豪秒数，建议不小于3000" value="3000"><br />
+<h4>第三步：点击开始<button>开始</button></h4>
+1. 一旦开始，必须刷新或关闭此页面才可以停止选课<br />
+2. 开始后，您仍然可以随时修改第二步文本框中的数据，且修改将立即生效<br />
+3. 开始后，您将看到一串乱码，不用担心，看汉字部分就可以，当乱码的汉字部分出现“选课成功”或"课程已选”等字样，说明您抢课成功。<br />
+<span style='color:red'>4. 乱码显示“缓存获取课程失败!”则代表您输入的课程号课序号不正确，请重新检验输入。</span><br />
+5. 可能需要全天挂机。<br />
+made by 某三巷 （trialley） from SDU<br />
+modify by LLL
+<script>
+    $('button').bind('click', function () {
+        var classtype = $("#classtype").val();
+        var classnum = $("#classnum").val();
+        var sec = $("#sec").val();
+        $('iframe').attr('src', `http://bkjwxk.sdu.edu.cn/b/xk/xs/add/${classtype}/${classnum}`);
+        setTimeout("$('button').click()", sec);
+    });
+</script>
